@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="h-[400vh]">
+    <HeaderTop />
+    <HeaderNav />
     <slot />
   </div>
 </template>
