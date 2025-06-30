@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-zinc-800 py-2 px-4 flex justify-between items-center sticky top-0">
+  <div class="bg-zinc-800 py-2 px-4 flex justify-between items-center sticky top-0 z-19 shadow-header">
     <HeaderLogo />
     <nav>
       <ul class="flex gap-8 text-white font-bold text-xl">

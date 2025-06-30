@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 py-1 bg-zinc-300">
+  <div class="relative px-4 py-1 bg-zinc-300 z-20">
     <nav class="flex justify-end gap-4 items-center">
       <ul class="flex gap-4 font-extrabold text-xl">
         <li v-for="link in links" :key="link.label">
