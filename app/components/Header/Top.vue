@@ -8,8 +8,8 @@
       </ul>
       <ul class="flex gap-3">
         <li v-for="link in iconLinks" :key="link.href">
-          <a v-if="!link.externalLink" :href="link.href" class="flex hover:text-zinc-500 hover:scale-115"><Icon :name="link.icon" size="24"/></a>
-          <a v-else :href="link.href" target="_blank" rel="noopener nofollow noreferrer" class="flex hover:text-zinc-500 hover:scale-115"><Icon :name="link.icon" size="24" /></a>
+          <a v-if="!link.externalLink" :href="link.href" class="flex hover:text-zinc-500 hover:scale-[120%]"><Icon :name="link.icon" size="24"/></a>
+          <a v-else :href="link.href" target="_blank" rel="noopener nofollow noreferrer" class="flex hover:text-zinc-500 hover:scale-[120%]"><Icon :name="link.icon" size="24" /></a>
         </li>
       </ul>
     </nav>
