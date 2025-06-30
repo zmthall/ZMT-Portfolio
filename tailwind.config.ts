@@ -26,8 +26,13 @@ export default {
             17: "17",
             18: "18",
             19: "19",
+        },
+        colors: {
+          brand: {
+            primary: '#d4af37'
+          }
         }
-    }
+    },
   },
   plugins: []
 } satisfies Config
