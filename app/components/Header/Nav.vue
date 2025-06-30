@@ -4,7 +4,7 @@
     <nav>
       <ul class="flex gap-8 text-white font-bold text-xl">
         <li v-for="link in links" :key="link.label">
-          <NuxtLink :to="link.to" class="hover:text-brand-primary">{{ link.label }}</NuxtLink>
+          <NuxtLink :to="link.to" class="hover:text-brand-primary links">{{ link.label }}</NuxtLink>
         </li>
       </ul>
     </nav>
