@@ -14,7 +14,7 @@
           <button class="flex absolute top-2 right-2 text-zinc-200 hover:text-zinc-800 z-1" aria-label="Close navigation menu" @click="toggleNav"><Icon name="material-symbols:cancel-rounded" size="40" /></button>
           <div class="mb-2 pb-2">
             <div class="p-2">
-              <NuxtImg src="/images/mountains.svg" class="-scale-x-100"/>
+              <NuxtImg src="/images/mountains.svg" preload priority class="-scale-x-100"/>
             </div>
             <div>
               <ul class="flex gap-4 justify-center">
