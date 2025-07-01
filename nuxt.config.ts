@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
+    '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts'
   ],

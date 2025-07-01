@@ -4,6 +4,7 @@
         "Noto",
         "nuxtjs",
         "Segoe",
-        "tabler"
+        "tabler",
+        "vueuse"
     ]
 }

@@ -1,7 +1,8 @@
 <template>
   <div class="h-[400vh]">
     <HeaderTop />
-    <HeaderNav />
+    <HeaderMainNav class="max-md:hidden"/>
+    <HeaderMobileNav class="md:hidden"/>
     <slot />
   </div>
 </template>
