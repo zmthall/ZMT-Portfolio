@@ -34,6 +34,9 @@ export default {
             primary: '#d4af37',
             secondary: '#fff6e0'
           }
+        },
+        screens: {
+          'xs': '500px'
         }
     },
   },
