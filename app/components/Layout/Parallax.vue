@@ -4,18 +4,18 @@
     :style="parallaxStyle"
   > 
     <!-- Content -->
-    <div class="relative z-10 min-h-screen flex items-center justify-center">
+    <div class="relative z-10 h-full flex items-center justify-center">
       <slot />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-interface Props {
-  background: string
-}
 
-const props = defineProps<Props>()
+
+const props = defineProps<{
+  background: string;
+}>()
 
 const parallaxStyle = computed(() => ({
   '--bg-url': `url("${props.background}")`

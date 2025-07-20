@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-black/50 text-white p-8 rounded-2xl backdrop-blur-md text-xl">
+  <div class="max-w-[1000px]">
     <slot />
   </div>
 </template>
