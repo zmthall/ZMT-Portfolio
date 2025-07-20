@@ -1,13 +1,10 @@
 <template>
-  <div class="h-[400vh]">
-    Home Page
+  <div>
+    
   </div>
 </template>
 
 <script lang="ts" setup>
-defineOptions({
-  name: "HomePage"
-})
 
 </script>
 

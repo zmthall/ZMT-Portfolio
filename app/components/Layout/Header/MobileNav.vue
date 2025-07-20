@@ -1,6 +1,6 @@
 <template>
   <div class="bg-zinc-800 py-1 px-4 flex justify-between items-center sticky top-0 z-19 shadow-header">
-    <HeaderLogo />
+    <LayoutHeaderLogo />
     <div class="flex items-center gap-4">
       <a href="tel:719-252-2700" class="flex text-white hover:text-brand-primary"><Icon name="line-md:phone-call-filled" size="40"/></a>
       <button class="flex text-white hover:text-brand-primary" :aria-expanded="navOpen" aria-label="Toggle navigation menu" @click="toggleNav"><Icon name="charm:menu-hamburger" size="40" /></button>

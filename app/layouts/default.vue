@@ -1,9 +1,10 @@
 <template>
-  <div class="h-[400vh]">
-    <HeaderTop />
-    <HeaderMainNav class="max-md:hidden"/>
-    <HeaderMobileNav class="md:hidden"/>
+  <div>
+    <LayoutHeaderTop />
+    <LayoutHeaderMainNav class="max-md:hidden"/>
+    <LayoutHeaderMobileNav class="md:hidden"/>
     <slot />
+    <LayoutFooter /> 
   </div>
 </template>
 
