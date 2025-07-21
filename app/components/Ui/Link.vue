@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 
 const props = withDefaults(defineProps<{
-  variant: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary'
   href?: string;
   to?: string;
 }>(), {

@@ -1,6 +1,6 @@
 <template>
   <section 
-    class="parallax relative min-h-screen px-8 lg:px-16 py-40" 
+    class="parallax relative min-h-screen px-4 py-40" 
     :style="parallaxStyle"
   > 
     <!-- Content -->

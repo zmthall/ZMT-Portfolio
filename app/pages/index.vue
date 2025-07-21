@@ -1,7 +1,30 @@
 <template>
   <div>
-    <div class="h-[100vw] bg-black">
-      testing
+    <div class="sm:h-[100vh] bg-black relative">
+      <NuxtImg src="/images/pages/index/face-thallas.png"  class="hidden sm:block sm:absolute sm:bottom-0 sm:right-0 sm:h-full sm:object-cover sm:opacity-25"/>
+      <div class="image-box-shadow relative sm:hidden">
+        <NuxtImg src="/images/pages/index/face-thallas-full.jpg" class="w-full" />
+      </div>
+      <div>
+        <UiCard class="space-y-4 bottom-0 sm:absolute md:relative md:w-1/2 w-full">
+          <h1>
+            Front-End Web Development
+          </h1>
+          <p>
+            I'm Zachary Thallas, a self-taught web developer who is passionate about quality over quantity. My mission is clear: to provide the best web development services for you. Whether you're a small business owner, a creative individual, or a growing startup, I'm here to turn your web dreams into reality.
+          </p>
+          <h2>
+            What I Offer
+          </h2>
+          <p>
+            My focus is on content-driven web design, telling your unique story through your website. I'm not just about creating websites; I'm about crafting web experiences that resonate with your audience, align with your brand, and drive results. Let's work together to create something exceptional.
+          </p>
+          <p>
+            Ready to get started? Explore my work and projects to see what I can do for you.
+          </p>
+          <UiLink to="/projects">Explore My Work</UiLink>
+        </UiCard>
+      </div>
     </div>
     <LayoutParallax background="/images/pages/index/rocky-mountains.jpg">
       <LayoutContainer>
@@ -39,6 +62,16 @@ defineOptions({
 
 </script>
 
-<style>
-
+<style scoped>
+ .image-box-shadow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 .4rem .4rem #000;
+    z-index: 1;
+    background: rgba(0,0,0,.3);
+  }
 </style>
