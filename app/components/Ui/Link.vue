@@ -1,8 +1,8 @@
 <template>
-  <a v-if="href" :href :class="[buttonClasses]">
+  <a v-if="href" :href="href" :target="newPage ? '_blank' : undefined" :class="[buttonClasses, stylingClasses]">
     <slot />
   </a>
-  <NuxtLink v-if="to" :to :class="[buttonClasses]">
+  <NuxtLink v-if="to" :to="to" :target="newPage ? '_blank' : undefined" :class="[buttonClasses, stylingClasses]">
     <slot/>
   </NuxtLink>
 </template>
@@ -10,13 +10,16 @@
 <script lang="ts" setup>
 
 const props = withDefaults(defineProps<{
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'brand' | 'blank'
   href?: string;
   to?: string;
+  stylingClasses?: string;
+  newPage?: boolean;
 }>(), {
   href: undefined,
   to: undefined,
-  variant: 'primary'
+  variant: 'primary',
+  stylingClasses: ''
 })
 
 const buttonClasses = computed(() => {
@@ -28,6 +31,11 @@ const buttonClasses = computed(() => {
   } else if (props.variant === 'secondary') {
     // Starts lighter zinc → hover to darker zinc (Image 1)  
     return `${baseClasses} bg-zinc-300 font-bold text-zinc-800 border-2 border-zinc-400 hover:bg-zinc-500 hover:text-white`
+  } else if (props.variant === 'blank') {
+    // Starts transparent → hover to white background (Image 3)
+    return `bg-transparent`
+  } else if (props.variant === 'brand') {
+    return `${baseClasses} bg-brand-primary font-bold text-white border-2 border-brand-primary hover:bg-white hover:text-brand-primary`
   }
 
   return undefined

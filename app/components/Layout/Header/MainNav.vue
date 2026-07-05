@@ -21,7 +21,7 @@ const links = [
   { to: '/resume', label: 'My Resume' },
   { to: '/projects', label: 'My Projects'},
   { to: '/about-me', label: 'About Me' },
-  { to: '/contact-me', label: 'Contact Me' }
+  { to: '/contact', label: 'Contact Me' }
 ]
 
 </script>

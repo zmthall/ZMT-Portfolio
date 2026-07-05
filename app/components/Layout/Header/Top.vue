@@ -2,9 +2,9 @@
   <div class="max-md:hidden relative px-4 py-1 bg-zinc-300 z-20">
     <nav class="flex justify-end gap-4 items-center">
       <ul class="flex gap-4 font-extrabold text-xl">
-        <li v-for="link in links" :key="link.label">
+        <!-- <li v-for="link in links" :key="link.label">
           <NuxtLink :to="link.to" class="hover:text-zinc-500 transition-colors duration-500 ease-in-out">{{ link.label }}</NuxtLink>
-        </li>
+        </li> -->
       </ul>
       <ul class="flex gap-3">
         <li v-for="link in iconLinks" :key="link.href">
@@ -17,10 +17,10 @@
 </template>
 
 <script lang="ts" setup>
-const links = [
-  { to: '/learning', label: 'My Learning' },
-  { to: '/blog', label: 'Blog' },
-]
+// const links = [
+//   { to: '/learning', label: 'My Learning' },
+//   { to: '/blog', label: 'Blog' },
+// ]
 
 const iconLinks = useStatic().iconLinks;
 </script>

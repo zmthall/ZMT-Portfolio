@@ -68,7 +68,7 @@ const links = [
   { to: '/projects', label: 'My Projects'},
   { to: '/learning', label: 'My Learning'},
   { to: '/about-me', label: 'About Me' },
-  { to: '/contact-me', label: 'Contact Me' }
+  { to: '/contact', label: 'Contact Me' }
 ]
 
 const iconLinks = [
