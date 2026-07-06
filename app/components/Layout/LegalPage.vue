@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="bg-white">
-      <LayoutContainer class="mx-auto space-y-10 py-20">
+      <LayoutContainer class="px-2 lg:px--0 mx-auto space-y-10 py-20">
         <section class="mx-auto max-w-4xl space-y-5 text-center">
           <p class="text-sm font-semibold uppercase tracking-[0.3em] text-brand-primary">
             {{ eyebrow }}
@@ -26,7 +26,7 @@
           </p>
         </section>
 
-        <UiCard class="legal-card">
+        <UiCard class="legal-card" padding="p-6 lg:p-8">
           <article class="legal-content">
             <slot />
           </article>

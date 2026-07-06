@@ -5,7 +5,7 @@
     />
 
     <span
-      class="rounded-full border border-gray-200 bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 shadow-sm"
+      class="rounded-full border border-gray-200 bg-white px-4 py-1 text-xs text-center font-semibold uppercase tracking-[0.3em] text-gray-500 shadow-sm"
     >
       {{ label }}
     </span>

@@ -3,14 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
 
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/icon',
-    '@nuxt/image',
-    '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-fonts'
-  ],
+  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', '@pinia/nuxt'],
   future: {
     compatibilityVersion: 4
   },
@@ -49,6 +42,12 @@ export default defineNuxtConfig({
     //     }
     //   ]
     // }
+  },
+  runtimeConfig: {
+    public: {
+      recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY || '',
+      useLocalApi: process.env.USE_LOCAL_API === 'true' || false
+    }
   },
   css: ['./assets/css/main.css'],
   googleFonts: {

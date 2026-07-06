@@ -66,7 +66,7 @@ const links = [
   { to: '/', label: 'Home'},
   { to: '/resume', label: 'My Resume' },
   { to: '/projects', label: 'My Projects'},
-  { to: '/learning', label: 'My Learning'},
+  // { to: '/learning', label: 'My Learning'},
   { to: '/about-me', label: 'About Me' },
   { to: '/contact', label: 'Contact Me' }
 ]

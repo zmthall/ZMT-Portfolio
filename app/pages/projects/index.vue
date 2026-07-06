@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutContainer class="mx-auto space-y-20 py-16">
+    <LayoutContainer class="px-2 lg:px-0 mx-auto space-y-20 py-16">
       <!-- Hero -->
       <section class="mx-auto max-w-4xl space-y-6 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.3em] text-brand-primary">
@@ -21,7 +21,7 @@
       <section class="space-y-8">
         <UiDivider label="Featured Case Study" />
 
-        <UiCard class="featured-card overflow-hidden">
+        <UiCard class="featured-card overflow-hidden" padding="p-3 sm:p-6">
           <div class="bg-gray-100 p-4 sm:p-6 rounded-md">
             <UiLink to="/projects/golden-gate-manor" variant="blank" styling-classes="rounded-lg block transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl">
               <NuxtImg
@@ -62,7 +62,7 @@
               </div>
 
               <!-- Project Stats -->
-              <div class="flex flex-wrap items-center gap-8 text-sm">
+              <div class="flex flex-wrap max-xs:justify-start max-lg:justify-center items-center gap-8 text-sm">
 
                 <div class="flex items-center gap-2">
                   <span class="text-2xl font-bold text-brand-primary">
@@ -73,7 +73,7 @@
                   </span>
                 </div>
 
-                <span class="text-gray-300">•</span>
+                <span class="text-gray-300 hidden lg:inline-block">•</span>
 
                 <div class="flex items-center gap-2">
                   <span class="text-2xl font-bold text-brand-primary">
@@ -84,7 +84,7 @@
                   </span>
                 </div>
 
-                <span class="text-gray-300">•</span>
+                <span class="text-gray-300 hidden lg:inline-block">•</span>
 
                 <div class="flex items-center gap-2">
                   <span class="text-2xl font-bold text-brand-primary">
@@ -95,7 +95,7 @@
                   </span>
                 </div>
 
-                <span class="text-gray-300">•</span>
+                <span class="text-gray-300 hidden lg:inline-block">•</span>
 
                 <div class="flex items-center gap-2">
                   <span class="text-2xl font-bold text-brand-primary">
@@ -106,7 +106,7 @@
                   </span>
                 </div>
 
-                <span class="text-gray-300">•</span>
+                <span class="text-gray-300 hidden lg:inline-block">•</span>
 
                 <div class="flex items-center gap-2">
                   <span class="text-2xl font-bold text-brand-primary">

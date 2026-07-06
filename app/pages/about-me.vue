@@ -109,7 +109,7 @@
 
     <!-- Philosophy -->
     <section class="bg-white">
-      <LayoutContainer class="space-y-8 py-20 mx-auto">
+      <LayoutContainer class="px-2 lg:px-0 space-y-8 py-20 mx-auto">
         <UiDivider label="Development Philosophy" />
 
         <UiCard class="about-card space-y-10 text-center">
@@ -256,7 +256,7 @@
 
     <!-- Beyond Development -->
     <section class="bg-white">
-      <LayoutContainer class="space-y-8 py-20 mx-auto">
+      <LayoutContainer class="px-2 lg:px-0 space-y-8 py-20 mx-auto">
         <UiDivider label="Beyond Development" />
 
         <UiCard class="about-card">

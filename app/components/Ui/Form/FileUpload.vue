@@ -20,7 +20,7 @@
       class="rounded-lg bg-zinc-800 px-5 py-3 font-semibold text-white transition-colors duration-200 hover:bg-brand-primary disabled:cursor-not-allowed disabled:opacity-50"
       @click="fileInput?.click()"
     >
-      Choose File
+      Choose File<template v-if="multiple">(s)</template>
     </button>
 
     <p class="mt-3 text-sm text-slate-500">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-2 lg:px-0">
     <!-- Hero -->
     <section class="relative overflow-hidden bg-black text-white">
       <NuxtImg
@@ -8,7 +8,7 @@
         class="hidden lg:block absolute bottom-0 right-0 h-full object-cover opacity-25"
       />
 
-      <LayoutContainer class="relative z-10 py-28 lg:py-36 mx-auto">
+      <LayoutContainer class="px-8 lg:px-0 relative z-10 py-28 lg:py-36 mx-auto">
         <div class="max-w-3xl space-y-6">
           <p class="text-sm font-semibold uppercase tracking-[0.3em] text-brand-primary">
             Contact
@@ -30,24 +30,7 @@
     <!-- Contact Form -->
     <section class="bg-white">
       <LayoutContainer class="mx-auto space-y-8 py-20">
-        <LayoutSectionDivider title="Start a Conversation" />
-
-        <UiAlert
-          variant="warning"
-          title="Contact Form Temporarily Unavailable"
-          class="mb-8"
-        >
-          The contact form is currently under development and is not accepting submissions
-          at this time. If you'd like to discuss a project or get in touch, please email me
-          directly at
-          <a
-            href="mailto:contact@zmtportfolio.com"
-            class="font-semibold underline"
-          >
-            contact@zmtportfolio.com
-          </a>.
-          I typically respond within one to two business days.
-        </UiAlert>
+        <UiDivider label="Start a Conversation" />
 
         <div class="grid gap-8 lg:grid-cols-[2fr_1fr]">
           <UiCard class="contact-card space-y-8">
@@ -159,21 +142,22 @@
                   />
                 </UiFormField>
 
-                <UiFormField
-                  label="Subject"
-                  for-id="subject"
-                  :error="errors.subject"
-                  required
-                >
-                  <UiFormInput
-                    id="subject"
-                    v-model="form.subject"
-                    placeholder="What would you like to discuss?"
-                    :error="Boolean(errors.subject)"
-                    required
-                  />
-                </UiFormField>
               </div>
+
+              <UiFormField
+                label="Subject"
+                for-id="subject"
+                :error="errors.subject"
+                required
+              >
+                <UiFormInput
+                  id="subject"
+                  v-model="form.subject"
+                  placeholder="What would you like to discuss?"
+                  :error="Boolean(errors.subject)"
+                  required
+                />
+              </UiFormField>
 
               <UiFormField
                 label="Project Details"
@@ -200,8 +184,8 @@
                 <UiFormFileUpload
                   id="attachments"
                   v-model="form.files"
-                  accept=".pdf,.png,.jpg,.jpeg,.doc,.docx"
-                  multiple
+                  accept=".pdf,.png,.jpg,.jpeg"
+                  :multiple="true"
                 />
               </UiFormField>
 
@@ -211,25 +195,17 @@
                   label="I understand this form is intended for legitimate project inquiries."
                   required
                 />
-
-                <UiAlert
-                  v-if="submitMessage"
-                  :variant="submitStatus"
-                  :title="submitTitle"
-                >
-                  {{ submitMessage }}
-                </UiAlert>
               </div>
 
-              <UiButton
+              <!-- <UiButton
                 variant="brand"
                 type="submit"
                 disabled
               >
                 Contact Form Coming Soon
-              </UiButton>
+              </UiButton> -->
 
-              <!-- <div class="flex flex-wrap gap-4 pt-2">
+              <div class="flex flex-wrap gap-4 pt-2">
                 <UiButton
                   variant="brand"
                   type="submit"
@@ -252,7 +228,7 @@
                 >
                   Reset Form
                 </UiButton>
-              </div> -->
+              </div>
             </form>
           </UiCard>
 
@@ -326,7 +302,7 @@
     <!-- FAQ -->
     <section class="bg-white">
       <LayoutContainer class="mx-auto space-y-8">
-        <LayoutSectionDivider title="Frequently Asked Questions" />
+        <UiDivider label="Frequently Asked Questions" />
 
         <UiAccordion
           :items="faqItems"
@@ -377,18 +353,29 @@
 </template>
 
 <script setup lang="ts">
+import type { ContactForm } from '~/types/contactForm'
+
 defineOptions({
   name: 'ContactPage'
 })
 
-type AlertVariant = 'info' | 'success' | 'warning' | 'danger'
+const { executeRecaptcha, verifyWithServer, loadRecaptcha, unloadRecaptcha } = useRecaptcha()
+
+onMounted(() => {
+  loadRecaptcha()
+})
+
+// Clean up ReCAPTCHA when component unmounts
+onUnmounted(() => {
+  unloadRecaptcha()
+})
+
+const toast = useToastStore()
+
 
 const isSubmitting = ref(false)
-const submitStatus = ref<AlertVariant>('info')
-const submitTitle = ref('')
-const submitMessage = ref('')
 
-const form = reactive({
+const form = reactive<ContactForm>({
   name: '',
   company: '',
   email: '',
@@ -442,11 +429,11 @@ const budgetOptions = [
     value: 'under-1000'
   },
   {
-    label: '$1,000 – $3,000',
+    label: '$1,000 - $3,000',
     value: '1000-3000'
   },
   {
-    label: '$3,000 – $7,500',
+    label: '$3,000 - $7,500',
     value: '3000-7500'
   },
   {
@@ -465,11 +452,11 @@ const timelineOptions = [
     value: 'asap'
   },
   {
-    label: '1–3 months',
+    label: '1-3 months',
     value: '1-3-months'
   },
   {
-    label: '3–6 months',
+    label: '3-6 months',
     value: '3-6-months'
   },
   {
@@ -558,64 +545,125 @@ const validateForm = () => {
   }
 
   if (!form.legitimateInquiry) {
-    submitStatus.value = 'warning'
-    submitTitle.value = 'Confirmation Required'
-    submitMessage.value = 'Please confirm that this is a legitimate project inquiry.'
+    toast.addToast({
+      variant: 'warning',
+      title: 'Confirmation Required',
+      message: 'Please confirm that this is a legitimate project inquiry.'
+    })
+
     return false
   }
 
-  return !errors.name && !errors.email && !errors.subject && !errors.message
+  const hasErrors = Boolean(
+    errors.name ||
+    errors.email ||
+    errors.subject ||
+    errors.message
+  )
+
+  if (hasErrors) {
+    toast.addToast({
+      variant: 'danger',
+      title: 'Missing Information',
+      message: 'Please fix the highlighted fields before submitting.'
+    })
+
+    return false
+  }
+
+  return true
+}
+
+const buildContactFormData = () => {
+  const formData = new FormData()
+
+  formData.append('name', form.name)
+  formData.append('company', form.company)
+  formData.append('email', form.email)
+  formData.append('phone', form.phone)
+  formData.append('projectType', form.projectType)
+  formData.append('budget', form.budget)
+  formData.append('timeline', form.timeline)
+  formData.append('subject', form.subject)
+  formData.append('message', form.message)
+  formData.append('legitimateInquiry', String(form.legitimateInquiry))
+
+  form.files.forEach((file) => {
+    formData.append('attachments', file)
+  })
+
+  return formData
 }
 
 const handleSubmit = async () => {
-  submitMessage.value = ''
-
   if (!validateForm()) {
-    if (!submitMessage.value) {
-      submitStatus.value = 'danger'
-      submitTitle.value = 'Missing Information'
-      submitMessage.value = 'Please fix the highlighted fields before submitting.'
-    }
-
     return
   }
 
   isSubmitting.value = true
 
-  await new Promise((resolve) => {
-    globalThis.setTimeout(resolve, 800)
-  })
+  try {
+    const recaptchaToken = await executeRecaptcha('contact_form')
+    const verification = await verifyWithServer(recaptchaToken)
 
-  submitStatus.value = 'success'
-  submitTitle.value = 'Message Ready'
-  submitMessage.value =
-    'The form is working visually. Connect this submit handler to your API or email service when you are ready.'
+    if (!verification.success || !verification.data?.valid) {
+      toast.addToast({
+        variant: 'danger',
+        title: 'Verification Failed',
+        message: 'ReCAPTCHA verification failed. Please try again.'
+      })
 
-  isSubmitting.value = false
+      return
+    }
+
+    const contactFormData = buildContactFormData()
+
+    await $fetch('/api/contact/submit', {
+      baseURL: useRuntimeConfig().public.useLocalApi
+        ? 'http://127.0.0.1:4000'
+        : 'https://api.zmtportfolio.com',
+      method: 'POST',
+      body: contactFormData
+    })
+
+    resetForm()
+
+    toast.addToast({
+      variant: 'success',
+      title: 'Message Sent',
+      message: 'Thank you for reaching out! I will review your message and respond as soon as possible.'
+    })
+  } catch (error) {
+    console.error('Error during form submission:', error)
+
+    toast.addToast({
+      variant: 'danger',
+      title: 'Submission Error',
+      message: 'Something went wrong while submitting the form. Please try again.'
+    })
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
-// const resetForm = () => {
-//   form.name = ''
-//   form.company = ''
-//   form.email = ''
-//   form.phone = ''
-//   form.projectType = ''
-//   form.budget = ''
-//   form.timeline = ''
-//   form.subject = ''
-//   form.message = ''
-//   form.files = []
-//   form.legitimateInquiry = false
+const resetForm = () => {
+  form.name = ''
+  form.company = ''
+  form.email = ''
+  form.phone = ''
+  form.projectType = ''
+  form.budget = ''
+  form.timeline = ''
+  form.subject = ''
+  form.message = ''
+  form.files = []
+  form.legitimateInquiry = false
 
-//   errors.name = ''
-//   errors.email = ''
-//   errors.subject = ''
-//   errors.message = ''
-
-//   submitStatus.value = 'info'
-//   submitTitle.value = ''
-//   submitMessage.value = ''
-// }
+  errors.name = ''
+  errors.email = ''
+  errors.subject = ''
+  errors.message = ''
+}
 </script>
 
 <style scoped>

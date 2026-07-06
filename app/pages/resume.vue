@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LayoutContainer class="mx-auto space-y-20 py-16">
+    <LayoutContainer class="px-2 lg:px-0 mx-auto space-y-20 py-16">
       <!-- Hero -->
       <section class="mx-auto max-w-4xl space-y-6 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.3em] text-brand-primary">
@@ -46,7 +46,7 @@
         <UiDivider label="Professional Highlights" />
 
         <UiCard class="resume-card">
-          <div class="grid grid-cols-2 gap-8 md:grid-cols-5">
+          <div class="flex justify-center sm:justify-around flex-wrap gap-8 lg:grid-cols-5">
             <div
               v-for="highlight in professionalHighlights"
               :key="highlight.label"
@@ -85,7 +85,7 @@
               </p>
             </div>
 
-            <ul class="flex flex-wrap gap-x-8 gap-y-3 text-base leading-7 text-slate-600">
+            <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-base leading-7 text-slate-600">
               <li
                 v-for="skill in skillGroup.skills"
                 :key="skill"
@@ -191,7 +191,7 @@
               />
             </div>
 
-            <div class="flex flex-1 flex-col space-y-4 p-6">
+            <div class="flex flex-1 flex-col sm:items-start lg:items-stretch space-y-4 p-6">
               <p class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-primary">
                 {{ project.type }}
               </p>

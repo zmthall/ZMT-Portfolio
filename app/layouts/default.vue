@@ -5,6 +5,11 @@
     <LayoutHeaderMobileNav class="md:hidden"/>
     <slot />
     <LayoutFooter /> 
+
+    <UiToast
+      :toasts="toastStore.toasts"
+      @remove="toastStore.removeToast"
+    />
   </div>
 </template>
 
@@ -13,6 +18,7 @@ defineOptions({
   name: "DefaultPages"
 })
 
+const toastStore = useToastStore()
 </script>
 
 <style>
